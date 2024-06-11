@@ -1,13 +1,15 @@
 import React from "react";
 import TriviaHeader from "../TriviaPage/TrivialHeader";
-import TextBox from "../TriviaPage/TextBox";
+import JakeSpeaking from "../TriviaPage/JakeSpeaking";
 
 const TriviaPage = () => {
   return (
     <>
-      <h1>The trivia page hi</h1>
-      <TriviaHeader/>
-      <TextBox/>
+    <font color='red'>
+      <h6>State Farm Trivia!</h6>
+      <h5>with Jake and Caitlin</h5>
+      </font>
+      <JakeSpeaking/>
     </>
   );
 };
