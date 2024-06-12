@@ -10,8 +10,8 @@ const TriviaHeader = () => {
     <div className="text-box">
     <font color='red'>
       <div className="spacing">
-      <h6>State Farm Trivia!</h6>
-      <h5> - with Jake and Caitlin</h5>
+      <h6>State Farm Trivia Ball (with Jake and Caitlin!)</h6>
+      <h5> Tap on Jake to begin</h5>
         </div>
       </font>
     </div>

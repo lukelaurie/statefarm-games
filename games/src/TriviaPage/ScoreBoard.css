@@ -1,0 +1,8 @@
+.board {
+    background: none;
+    position: fixed;
+    top: 250px;
+    width: 615px;
+    height: 250px;
+    left: 615px;
+}

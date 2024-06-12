@@ -20,6 +20,13 @@ h6 {
     font-size: 30px;
     margin: auto;
 }
+h7 {
+    font-family: "Tiny5";
+    font-weight: 600;
+    font-style: normal;
+    font-size: 53px;
+    margin: auto;
+}
 p1 {
     font-family: "Tiny5";
     font-size: 20px;
