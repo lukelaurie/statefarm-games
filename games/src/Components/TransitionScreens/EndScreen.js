@@ -21,7 +21,7 @@ const ImageComponent = ({ score }) => {
       } else if (score < 300) {
         setInfo1("You're an Okay Driver.");
         setInfo2("You're not the best driver but that's okay.");
-        setInfo3("State Farm encourages you to drive safer on the roads.");
+        setInfo3("State Farm encourages you to drive safer on the road.");
       } else if (score > 300) {
         setInfo1("You're a Risky Driver...");
         setInfo2(
