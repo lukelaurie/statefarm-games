@@ -10,7 +10,8 @@ const JakeSpeaking = () => {
     <div>
       <Popup trigger=
         {<button className="button"> <JakeClass/> </button>}
-        position="right center">
+        position="right bottom" 
+        contentStyle={{ width: '600px', height: '200px' }}>
           <div>
             <h5>
               <font color='red'>
@@ -19,7 +20,7 @@ const JakeSpeaking = () => {
                 </h5>
                 </div>
                 <div>
-          <button>The state farm website fejnfke fewjkfnew fewjkf</button>
+          <button>Option 1</button>
           <button>Option 2</button>
           </div>
         </Popup>
