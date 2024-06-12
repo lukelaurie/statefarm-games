@@ -11,7 +11,7 @@
     position: absolute;
     top:5%;
     padding: 1% 2%; /* Padding inside the button */
-    background: #000; /* Semi-transparent black background */
+     /* Semi-transparent black background */
     color: white; /* Text color */
     border: none; /* Remove border */
     font-family: "Press Start 2P", system-ui;
@@ -22,16 +22,20 @@
   .bball{
     cursor: pointer; 
     left: 26%;
+    background: #000;
   }
   .car{
     cursor: pointer; 
     left:0;
+    background: #000;
   }
   .cs1{
     right:0;
+    background: gray;
   }
   .cs2{
     left:54%;
+    background: gray;
   }
 
   .bball:hover, .car:hover {
