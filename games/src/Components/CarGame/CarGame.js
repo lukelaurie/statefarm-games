@@ -16,7 +16,6 @@ const images = [
 const baseVelocity = -120;
 
 const CarGame = ({ modifyScore }) => {
-
   const handleCollision = (curGame, item, oncomingItem) => {
     // curGame.scene.pause();
     // // Display a message indicating that the game is over
@@ -36,11 +35,25 @@ const CarGame = ({ modifyScore }) => {
     addOncomingItem(window, curGame, images[curEvent][0], isFirst);
   };
 
+  const addBush = (window, curGame, isTop) => {
+    const x_coord = window.innerWidth;
+    let y_coord;
+
+    // y_coord = Math.floor(Math.random() * (-120 - -140)) + -120;
+    y_coord = 0;
+    const bush = curGame.physics.add
+      .image(x_coord, y_coord, "bush")
+      .setScale(0.2);
+
+    bush.setVelocity(baseVelocity, 0);
+    bush.setDepth(2);
+  };
+
   const addOncomingItem = (window, curGame, item, isFirst) => {
     let x_coord = window.innerWidth;
     if (isFirst == 0) x_coord -= 400;
     if (isFirst == 1) x_coord -= 150;
-    const y_coord = Phaser.Math.Between(50, window.innerHeight - 250); // Random y-coordinate
+    let y_coord = Phaser.Math.Between(130, 400); // Random y-coordinate
 
     let scale;
     let velocity;
@@ -50,7 +63,7 @@ const CarGame = ({ modifyScore }) => {
         velocity = baseVelocity;
         break;
       case "cat":
-        scale = 0.25;
+        scale = 0.15;
         velocity = Math.floor(Math.random() * (-170 - -135 + 1)) + -105;
         break;
       case "pothole":
@@ -58,22 +71,30 @@ const CarGame = ({ modifyScore }) => {
         velocity = baseVelocity;
         break;
       case "flocar":
-        scale = 0.25;
+        scale = 0.35;
         velocity = Math.floor(Math.random() * (-280 - -170 + 1)) + -105;
         break;
       case "oncomingCar":
-        scale = 0.25;
+        scale = 0.35;
         velocity = Math.floor(Math.random() * (-240 - -170 + 1)) + -105;
         break;
+      case "bush":
+        scale = .15;
+        velocity = baseVelocity;
+        if (isFirst === 2) {
+            y_coord = Math.floor(Math.random() * (55 - 30)) + 30;
+        } else {
+            y_coord = Math.floor(Math.random() * (485 - 465)) + 465;
+        }
     }
 
     // Add banana
     const oncomingItem = curGame.physics.add
       .image(x_coord, y_coord, item)
       .setScale(scale);
-    oncomingItem.setVelocity(velocity, 0); // Move banana left
+    oncomingItem.setVelocity(velocity, 0); // Move left
 
-    // Collide with banana and execute handleCollision function
+    // Collide with item and execute handleCollision function
     curGame.physics.add.collider(
       curGame.cube,
       oncomingItem,
@@ -83,9 +104,42 @@ const CarGame = ({ modifyScore }) => {
     );
   };
 
+  const setTimeIntervals = (curGame) => {
+    // show the lines
+    curGame.time.addEvent({
+      delay: 1000,
+      callback: () => displayLines(window, curGame),
+      callbackScope: curGame,
+      loop: true,
+    });
+
+    // show the random icons
+    curGame.time.addEvent({
+      delay: Math.floor(Math.random() * (3500 - 1000)) + 1000,
+      callback: () => chooseRandomIcon(window, curGame, 2),
+      callbackScope: curGame,
+      loop: true,
+    });
+
+    // show the bushes
+    curGame.time.addEvent({
+      delay: Math.floor(Math.random() * (5000 - 1000)) + 1000,
+      callback: () => addOncomingItem(window, curGame, "bush", 2),
+      callbackScope: curGame,
+      loop: true,
+    });
+
+    curGame.time.addEvent({
+      delay: Math.floor(Math.random() * (5000 - 1000)) + 1000,
+      callback: () => addOncomingItem(window, curGame, "bush", 3),
+      callbackScope: curGame,
+      loop: true,
+    });
+  };
+
   const displayLines = (window, curGame) => {
     const x_coord = window.innerWidth;
-    const y_coord = 150;
+    const y_coord = 253;
 
     // Add banana
     const roadLine = curGame.physics.add
@@ -96,7 +150,7 @@ const CarGame = ({ modifyScore }) => {
 
   const displayInitialLines = (curGame) => {
     const x_coord = window.innerWidth;
-    const y_coord = 150;
+    const y_coord = 253;
     const numLines = Math.ceil(x_coord / 110); // Number of lines based on the width of the screen
 
     for (let i = 0; i < numLines; i++) {
@@ -120,8 +174,10 @@ const CarGame = ({ modifyScore }) => {
       this.cube.setDepth(1);
       // prevent from going out boarder
       this.cube.setCollideWorldBounds(true);
+      this.cube.body.setAllowGravity(false);
+      this.cube.body.setImmovable(true);
 
-      this.cube.body.setCircle(this.cube.width / 4);
+      this.cube.body.setCircle(this.cube.width / 3, 45, 50);
 
       // allow use keys
       this.cursors = this.input.keyboard.createCursorKeys();
@@ -131,19 +187,7 @@ const CarGame = ({ modifyScore }) => {
       chooseRandomIcon(window, this, 0);
       chooseRandomIcon(window, this, 1);
 
-      this.time.addEvent({
-        delay: 1000,
-        callback: () => displayLines(window, this),
-        callbackScope: this,
-        loop: true,
-      });
-
-      this.time.addEvent({
-        delay: 3000,
-        callback: () => chooseRandomIcon(window, this, 2),
-        callbackScope: this,
-        loop: true,
-      });
+      setTimeIntervals(this);
     },
 
     update: function () {
@@ -163,7 +207,7 @@ const CarGame = ({ modifyScore }) => {
     const config = {
       type: Phaser.AUTO,
       width: "100%",
-      height: "300px",
+      height: "505px",
       physics: {
         default: "arcade",
         arcade: {
