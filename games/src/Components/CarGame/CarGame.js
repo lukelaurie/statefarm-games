@@ -16,17 +16,9 @@ const images = [
 const baseVelocity = -120;
 
 const CarGame = ({ modifyScore }) => {
-  const handleCollision = (curGame, item, oncomingItem) => {
-    // curGame.scene.pause();
-    // // Display a message indicating that the game is over
-    // const gameOverText = curGame.add.text(400, 300, "Game Over", {
-    //   fontSize: "32px",
-    //   fill: "#fff",
-    // });
-    // gameOverText.setOrigin(0.5);
+  const handleCollision = (item, oncomingItem) => {
     modifyScore(item);
     oncomingItem.setVelocityX(0); // Stop the oncoming item
-    // oncomingItem.disableBody(true, true); // Disable and hide the oncoming item
     oncomingItem.destroy();
   };
 
@@ -98,7 +90,7 @@ const CarGame = ({ modifyScore }) => {
     curGame.physics.add.collider(
       curGame.cube,
       oncomingItem,
-      () => handleCollision(curGame, item, oncomingItem),
+      () => handleCollision(item, oncomingItem),
       null,
       curGame
     );
@@ -212,7 +204,7 @@ const CarGame = ({ modifyScore }) => {
         default: "arcade",
         arcade: {
           gravity: { y: 0 },
-          debug: true,
+          debug: false,
         },
       },
       transparent: true,

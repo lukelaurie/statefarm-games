@@ -63,27 +63,10 @@
     width: 100%;
 }
 
-.restart{
-    position: absolute;
-    top: 80%; /* Center vertically */
-    left: 35%; /* Center horizontally */
-    transform: translate(-50%, -50%); /* Adjust the position to truly center */
-    padding: 10px 20px; /* Padding inside the button */
-    background: #000; /* Semi-transparent black background */
-    color: white; /* Text color */
-    border: none; /* Remove border */
-    cursor: pointer; /* Cursor to pointer to indicate it's clickable */
-    font-family: "Press Start 2P", system-ui;
-    font-weight: 400;
-    font-style: normal;
-    font-size: 100%;
-
-}
-
 .quit{
     position: absolute;
     top: 80%; /* Center vertically */
-    left: 65%; /* Center horizontally */
+    left: 50%; /* Center horizontally */
     transform: translate(-50%, -50%); /* Adjust the position to truly center */
     padding: 10px 43px; /* Padding inside the button */
     background: #000; /*black background */

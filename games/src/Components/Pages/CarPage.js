@@ -1,73 +1,91 @@
 import React, { useState, useEffect } from "react";
-import StartScreen from '../TransitionScreens/StartScreen';
-import EndScreen from '../TransitionScreens/EndScreen';
+import StartScreen from "../TransitionScreens/StartScreen";
+import EndScreen from "../TransitionScreens/EndScreen";
 import CarGame from "../CarGame/CarGame";
+
 import "../../styles/carGameStyles.css";
 import { useTimer } from "react-timer-hook";
 
-let score = 500;
-
+const gameTime = 15;
 
 const CarPage = () => {
   const [score, setScore] = useState(100);
-  const [swapView, setSwapView] = useState(false);
+  const [swapView, setSwapView] = useState(0);
+
+  const playSound = (url) => {
+    const audio = new Audio(url);
+    audio.play()
+    .catch(error => {
+      console.error('Failed to play audio:', error);
+    });
+  };
 
   const modifyScore = (eventType) => {
     let updateScore;
     switch (eventType) {
       case "banana":
+        playSound("./banana.mp3");
         updateScore = 20;
         break;
       case "cat":
+        playSound("./cat.mp3");
         updateScore = 40;
         break;
       case "pothole":
+        playSound("./pop.mp3");
         updateScore = 10;
         break;
       case "flocar":
+        playSound("./cheer.mp3");
         updateScore = -10;
         break;
       case "oncomingCar":
+        playSound("./crash.mp3");
         updateScore = 100;
         break;
       case "bush":
-          updateScore = 15;
-          break;
+        playSound("./bush.mp3");
+        updateScore = 15;
+        break;
     }
     setScore((prevScore) => prevScore + updateScore);
   };
 
   const expiryTimestamp = new Date();
-  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + 60);
+  expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + gameTime);
 
-  const {
-    seconds,
-    minutes,
-    start,
-    restart,
-    isRunning,
-  } = useTimer({
+  const { seconds, minutes, start } = useTimer({
     expiryTimestamp,
+    autoStart: false,
     onExpire: () => {
-      console.log("Timer expired");
-    }
+      if (swapView === 1) setSwapView(2);
+    },
   });
 
+  // const restartGame = () => {
+  //   const expiryTimestamp = new Date();
+  //     expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + gameTime);
+  //     start();
+  //     setSwapView(1);
+  // }
+
   useEffect(() => {
-    start();
-  }, [start]);
+    if (swapView === 1) {
+      const expiryTimestamp = new Date();
+      expiryTimestamp.setSeconds(expiryTimestamp.getSeconds() + gameTime);
+      start(expiryTimestamp);
+    }
+  }, [swapView]);
 
   return (
     <>
-      <EndScreen score={score}/>
-
-      {swapView && (
+      {swapView === 0 && (
         <>
-          <h1 className = "HeadingCar">Welcome to...</h1>
+          <h1 className="HeadingCar">Welcome to...</h1>
           <StartScreen setSwapView={setSwapView} />
         </>
       )}
-      {!swapView && (
+      {swapView === 1 && (
         <>
           <div>
             <h1 className="car-title">Current Rates: {score}</h1>
@@ -80,6 +98,11 @@ const CarPage = () => {
               </div>
             </div>
           </div>
+        </>
+      )}
+      {swapView === 2 && (
+        <>
+          <EndScreen score={score} />
         </>
       )}
     </>

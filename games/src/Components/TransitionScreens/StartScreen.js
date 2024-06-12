@@ -4,7 +4,7 @@ import "./TS.css";
 
 const ImageComponent = ({ setSwapView }) => {
   const Start = ()=> {
-    setSwapView(false);
+    setSwapView(1);
   }
 
   return (
