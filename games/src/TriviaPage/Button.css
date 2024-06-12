@@ -2,8 +2,9 @@
     background: none;
     border: none;
     outline: none;
-    margin-left: 30px;
-    margin-top: 400px;
+    position:absolute;
+    bottom: 0;
+    left: 0;
 }
 /*
 .within-popup {
