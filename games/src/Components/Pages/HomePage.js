@@ -1,16 +1,20 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import "../../styles/homepagestyle.css";
 
 const HomePage = () => {
+
+  
   return (
     <>
-      <h1>The home page</h1>
-      <nav>
-        <ul>
-          <li><Link to="/car">Go to Car Page</Link></li>
-          <li><Link to="/trivia">Go to Trivia Page</Link></li>
-        </ul>
-      </nav>
+    <div className="home">
+          <img src= "homescreen.jpg" alt="homescreen" className = "homepage"/>
+          {/* <li><Link to="/car">Go to Car Page</Link></li>
+          <li><Link to="/trivia">Go to Trivia Page</Link></li> */}
+          <button className='bball'>(BASKETBALL)</button>
+          <button className='car'>ROAD QUEST</button>   
+          <h1 className='begin'> STATE FARM MINI-GAME MANIA </h1>   
+      </div>
     </>
   );
 };

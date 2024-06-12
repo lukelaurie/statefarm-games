@@ -1,4 +1,5 @@
 /* Background display */
+
 .moving-background {
   background-image: url('../../public/road.png'); 
   background-size: cover; 
@@ -22,3 +23,5 @@ canvas {
   margin: 0; /* Adjust if needed */
   padding: 0; /* Adjust if needed */
 }
+
+
