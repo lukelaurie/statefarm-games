@@ -1,0 +1,15 @@
+canvas {
+  position: absolute;
+  top: 253px;
+}
+
+/* Background display */
+.moving-background {
+  background-image: url('../../public/road.png'); 
+  background-size: cover; 
+  width: 100%;
+  height: 500px; 
+  z-index: -1;
+  position: absolute;
+  top: 150px;
+}
