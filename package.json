@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "react-router-dom": "^6.23.1"
+    "phaser": "^3.80.1",
+    "react-phaser-fiber": "^0.2.4",
+    "react-router-dom": "^6.23.1",
+    "react-timer-hook": "^3.0.7"
   }
 }

@@ -1,11 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import "./TS.css";
 
 
-const ImageComponent = () => {
-
+const ImageComponent = ({ setSwapView }) => {
   const Start = ()=> {
-    console.log("hi");
+    setSwapView(false);
   }
 
   return (
