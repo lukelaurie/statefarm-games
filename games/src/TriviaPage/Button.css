@@ -23,3 +23,8 @@
 .within-popup {
     padding: 200px;
 }
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
