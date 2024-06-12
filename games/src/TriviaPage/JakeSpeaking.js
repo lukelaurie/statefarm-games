@@ -3,6 +3,8 @@ import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import './Font.css';
 import JakeClass from "./JakeClass"
+import SoundButton from "./SoundEffect";
+import Sound from './SoundEffect.mp3';
 import './Button.css';
 
 const JakeSpeaking = () => {
@@ -20,7 +22,7 @@ const JakeSpeaking = () => {
                 </h5>
                 </div>
                 <div>
-          <button>Option 1</button>
+          <SoundButton soundFile={Sound} label="Option 1" />
           <button>Option 2</button>
           </div>
         </Popup>
