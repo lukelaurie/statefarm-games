@@ -13,7 +13,7 @@ const images = [
   ["pothole", "pothole.png"],
 ];
 
-const baseVelocity = -120;
+const baseVelocity = -200;
 
 const CarGame = ({ modifyScore }) => {
   const handleCollision = (item, oncomingItem) => {
@@ -31,7 +31,6 @@ const CarGame = ({ modifyScore }) => {
     const x_coord = window.innerWidth;
     let y_coord;
 
-    // y_coord = Math.floor(Math.random() * (-120 - -140)) + -120;
     y_coord = 0;
     const bush = curGame.physics.add
       .image(x_coord, y_coord, "bush")
@@ -56,7 +55,7 @@ const CarGame = ({ modifyScore }) => {
         break;
       case "cat":
         scale = 0.15;
-        velocity = Math.floor(Math.random() * (-170 - -135 + 1)) + -105;
+        velocity = Math.floor(Math.random() * (-280 - -200 + 1)) + -200;
         break;
       case "pothole":
         scale = 0.2;
@@ -64,11 +63,11 @@ const CarGame = ({ modifyScore }) => {
         break;
       case "flocar":
         scale = 0.35;
-        velocity = Math.floor(Math.random() * (-280 - -170 + 1)) + -105;
+        velocity = Math.floor(Math.random() * (-370 - -250 + 1)) + -250;
         break;
       case "oncomingCar":
         scale = 0.35;
-        velocity = Math.floor(Math.random() * (-240 - -170 + 1)) + -105;
+        velocity = Math.floor(Math.random() * (-370 - -250 + 1)) + -250;
         break;
       case "bush":
         scale = .15;
@@ -99,7 +98,7 @@ const CarGame = ({ modifyScore }) => {
   const setTimeIntervals = (curGame) => {
     // show the lines
     curGame.time.addEvent({
-      delay: 1000,
+      delay: 500,
       callback: () => displayLines(window, curGame),
       callbackScope: curGame,
       loop: true,
@@ -107,7 +106,7 @@ const CarGame = ({ modifyScore }) => {
 
     // show the random icons
     curGame.time.addEvent({
-      delay: Math.floor(Math.random() * (3500 - 1000)) + 1000,
+      delay: Math.floor(Math.random() * (1500 - 600)) + 600,
       callback: () => chooseRandomIcon(window, curGame, 2),
       callbackScope: curGame,
       loop: true,
@@ -115,7 +114,7 @@ const CarGame = ({ modifyScore }) => {
 
     // show the bushes
     curGame.time.addEvent({
-      delay: Math.floor(Math.random() * (5000 - 1000)) + 1000,
+      delay: Math.floor(Math.random() * (3000 - 1000)) + 1000,
       callback: () => addOncomingItem(window, curGame, "bush", 2),
       callbackScope: curGame,
       loop: true,

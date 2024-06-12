@@ -6,7 +6,7 @@ import CarGame from "../CarGame/CarGame";
 import "../../styles/carGameStyles.css";
 import { useTimer } from "react-timer-hook";
 
-const gameTime = 15;
+const gameTime = 45;
 
 const CarPage = () => {
   const [score, setScore] = useState(100);
