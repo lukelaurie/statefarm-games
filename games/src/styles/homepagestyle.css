@@ -7,7 +7,7 @@
     left:0;
   }
 
-  .bball, .car{
+  .bball, .car, .cs2, .cs1{
     position: absolute;
     top:5%;
     padding: 1% 2%; /* Padding inside the button */
@@ -25,6 +25,12 @@
   }
   .car{
     left:0;
+  }
+  .cs1{
+    right:0;
+  }
+  .cs2{
+    left:54%;
   }
 
   .bball:hover, .car:hover {
