@@ -6,6 +6,12 @@
     bottom: 0;
     left: 0;
 }
+.website-button {
+    background: none;
+    position:absolute;
+    top: 0;
+    right: 0;
+}
 /*
 .within-popup {
     top: 50%;
