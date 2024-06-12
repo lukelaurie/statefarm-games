@@ -14,16 +14,17 @@
     background: #000; /* Semi-transparent black background */
     color: white; /* Text color */
     border: none; /* Remove border */
-    cursor: pointer; /* Cursor to pointer to indicate it's clickable */
     font-family: "Press Start 2P", system-ui;
     font-weight: 400;
     font-style: normal;
     font-size: 100%;
   }
   .bball{
+    cursor: pointer; 
     left: 26%;
   }
   .car{
+    cursor: pointer; 
     left:0;
   }
   .cs1{
