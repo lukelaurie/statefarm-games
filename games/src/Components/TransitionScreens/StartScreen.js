@@ -15,5 +15,6 @@ const ImageComponent = ({ setSwapView }) => {
     </div>
   );
 };
+//C:\Users\abbie\OneDrive\Desktop\statefarm-games\games
 
 export default ImageComponent;
